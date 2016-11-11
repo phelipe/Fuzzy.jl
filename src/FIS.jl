@@ -1,5 +1,6 @@
 # Contains FIS and Rule types
 # ---------------------------
+#
 
 type Rule
 	# A Rule connecting input and output membership function
