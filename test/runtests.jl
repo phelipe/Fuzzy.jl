@@ -10,8 +10,9 @@ tests = ["triangular_mf.jl",
 		"bell_mf.jl",
 		"sigmoid_mf.jl",
 		"fis_mamdani.jl",
-		"fis_sugeno.jl"]
-				
+		"fis_sugeno.jl",
+        "t_norm.jl"]
+
 println("Running test:")
 
 for tst in tests

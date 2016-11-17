@@ -2,7 +2,7 @@
 
 
 #"MIN"
-function minimum(tmp_strengths::Vector{Float64})
+function minimum_value(tmp_strengths::Vector{Float64})
 
     return minimum(tmp_strengths)
 
