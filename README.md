@@ -1,7 +1,9 @@
 # Fuzzy
 
+###Build
 [![Build Status](https://travis-ci.org/phelipe/Fuzzy.jl.svg?branch=master)](https://travis-ci.org/phelipe/Fuzzy.jl)
 
+###Coverage
 [![Coverage Status](https://coveralls.io/repos/phelipe/Fuzzy.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/phelipe/Fuzzy.jl?branch=master)
 
 [![codecov.io](http://codecov.io/github/phelipe/Fuzzy.jl/coverage.svg?branch=master)](http://codecov.io/github/phelipe/Fuzzy.jl?branch=master)
@@ -75,29 +77,26 @@ julia> eval_fis(fis, in_vals)
 ### Features
 
 -	FIS
-	-	Mamdani
+		-	Mamdani
     -	Sugeno
 -	Membership functions
-	-	Triangular
+		-	Triangular
     -	Gaussian
     -	Bell
     -	Trapezoidal
     -	Sigmoid
 -	Defuzzification
-	-	Mean of Maximum
-    -	Weighted Average (default)
+		-	Mean of Maximum
+  	-	Weighted Average (default)
     -	*Centroid (coming soon)*
-
-
-###Modifications
 - T-Norm
-    - minimum
-    - algebraic product
-    - bounded difference
-    - drastic product
-    - einstein product
-    - hamacher product
-    - nilpotent minimum
+    - minimum (MIN)
+    - algebraic product (A-PROD)
+    - bounded difference (B-DIF)
+    - drastic product (D-PROD)
+    - einstein product (E-PROD)
+    - hamacher product (H-PROD)
+
 
 ###License
 

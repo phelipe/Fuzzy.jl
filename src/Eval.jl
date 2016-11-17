@@ -1,10 +1,7 @@
 # Contains evaluation functions
 # ----------------------------------
 
-function eval_fis(fis::FISMamdani,
-					input_values::Vector{Float64};
-					firing_method = "MIN",
-					defuzz_method = "WTAV")
+function eval_fis(fis::FISMamdani, input_values::Vector{AbstractFloat}; firing_method = "MIN", defuzz_method = "WTAV")
 	# Evaluates the FIS
 	#
 	# Parameters
@@ -15,9 +12,9 @@ function eval_fis(fis::FISMamdani,
 	# 		Currently supports "MIN" (minimum) and "PROD" (product)
 	# `defuzz_method` is the method for defuzzification, see defuzz function definition
 
-	firing_strengths = Float64[]
+	firing_strengths = AbstractFloat[]
 	for rule in fis.rules
-		tmp_strengths = Float64[]
+		tmp_strengths = AbstractFloat[]
 		for i in 1:length(rule.input_mf_names)
 			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
 		end
@@ -27,9 +24,7 @@ function eval_fis(fis::FISMamdani,
 
 end
 
-function eval_fis(fis::FISSugeno,
-					input_values::Vector{Float64};
-					firing_method = "MIN")
+function eval_fis(fis::FISSugeno,	input_values::Vector{AbstractFloat}; firing_method = "MIN")
 	# Evaluates the FIS
 	#
 	# Parameters
@@ -39,9 +34,9 @@ function eval_fis(fis::FISSugeno,
 	# `firing_method` is the method for finding firing strength
 	# 		Currently supports "MIN" (minimum) and "PROD" (product)
 
-	firing_strengths = Float64[]
+	firing_strengths = AbstractFloat[]
 	for rule in fis.rules
-		tmp_strengths = Float64[]
+		tmp_strengths = AbstractFloat[]
 		for i in 1:length(rule.input_mf_names)
 			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
 		end
@@ -59,10 +54,7 @@ function eval_fis(fis::FISSugeno,
 
 end
 
-function defuzz(firing_strengths::Vector{Float64},
-				rules::Vector{Rule},
-				output_mfs_dict::Dict{Any, Any},
-				defuzz_method::AbstractString)
+function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dict::Dict{Any, Any}, defuzz_method::AbstractString)
 	# Defuzzifies the output using the given firing strengths
 	#
 	# Parameters
@@ -80,7 +72,7 @@ function defuzz(firing_strengths::Vector{Float64},
 		max_fired_mf_name = rules[max_firing_index].output_mf
 		output_mfs_dict[max_fired_mf_name].mean_at(maximum(firing_strengths))
 	elseif defuzz_method == "WTAV"
-		mean_vec = Float64[]
+		mean_vec = AbstractFloat[]
 		for i in 1:length(rules)
 			push!(mean_vec, output_mfs_dict[rules[i].output_mf].mean_at(firing_strengths[i]))
 		end
@@ -90,7 +82,7 @@ function defuzz(firing_strengths::Vector{Float64},
 end
 
 
-function firing(tmp_strengths::Vector{Float64},firing_method::AbstractString)
+function firing(tmp_strengths::Vector{AbstractFloat},firing_method::AbstractString)
 	if firing_method == "MIN"
 		return	minimum_value(tmp_strengths)
 	elseif firing_method == "A-PROD"

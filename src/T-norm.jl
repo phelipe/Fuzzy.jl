@@ -2,25 +2,21 @@
 
 
 #"MIN"
-function minimum_value(tmp_strengths::Vector{Float64})
-
+function minimum_value(tmp_strengths::Vector{AbstractFloat})
     return minimum(tmp_strengths)
-
 end
 
 #"A-PROD"
-function algebraic_product(tmp_strengths::Vector{Float64})
-
+function algebraic_product(tmp_strengths::Vector{AbstractFloat})
     return prod(tmp_strengths)
-
 end
 
 #"B-DIF"
-function bounded_difference(tmp_strengths::Vector{Float64})
+function bounded_difference(tmp_strengths::Vector{AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
-            val = max(0.0, val + tmp_strengths[i] - 1)
+            val = max(0.0, val + tmp_strengths[i] - 1.0)
         end
         return val
     else
@@ -29,7 +25,7 @@ function bounded_difference(tmp_strengths::Vector{Float64})
 end
 
 #"D-PROD"
-function drastic_product(tmp_strengths::Vector{Float64})
+function drastic_product(tmp_strengths::Vector{AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i = 2:length(tmp_strengths)
@@ -46,11 +42,11 @@ function drastic_product(tmp_strengths::Vector{Float64})
 end
 
 #"E-PROD"
-function einstein_product(tmp_strengths::Vector{Float64})
+function einstein_product(tmp_strengths::Vector{AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
-            val = (val * tmp_strengths[i]) / (2 - (val + tmp_strengths[i] - val * tmp_strengths[i]))
+            val = (val * tmp_strengths[i]) / (2.0 - (val + tmp_strengths[i] - val * tmp_strengths[i]))
         end
         return val
     else
@@ -59,7 +55,7 @@ function einstein_product(tmp_strengths::Vector{Float64})
 end
 
 #"H-PROD"
-function hamacher_product(tmp_strengths::Vector{Float64})
+function hamacher_product(tmp_strengths::Vector{AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
