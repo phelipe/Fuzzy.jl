@@ -2,7 +2,7 @@
 # ---------------------------
 #
 
-type Rule{T<:AbstractFloat}
+type Rule
 	# A Rule connecting input and output membership function
 	#
 	# Properties
@@ -12,7 +12,7 @@ type Rule{T<:AbstractFloat}
 	# 		or is a Vector of AbstractFloat containing consequence parameters in case of Sugeno fis
 
 	input_mf_names::Vector{AbstractString}
-	output_mf::Union{Vector{T}, AbstractString}
+	output_mf::Union{Vector{Float64}, AbstractString}
 
 end
 
