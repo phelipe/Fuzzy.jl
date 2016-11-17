@@ -11,8 +11,8 @@ type Rule
 	# `output_mf` is either an ASCIIString containing the connected output membership function name with `input_mf_names`
 	# 		or is a Vector of Float64 containing consequence parameters in case of Sugeno fis
 
-	input_mf_names::Vector{ASCIIString}
-	output_mf::Union{Vector{Float64}, ASCIIString}
+	input_mf_names::Vector{AbstractString}
+	output_mf::Union{Vector{Float64}, AbstractString}
 
 end
 

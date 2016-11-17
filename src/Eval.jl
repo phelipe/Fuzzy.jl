@@ -62,7 +62,7 @@ end
 function defuzz(firing_strengths::Vector{Float64},
 				rules::Vector{Rule},
 				output_mfs_dict::Dict{Any, Any},
-				defuzz_method::String)
+				defuzz_method::AbstractString)
 	# Defuzzifies the output using the given firing strengths
 	#
 	# Parameters
@@ -90,7 +90,7 @@ function defuzz(firing_strengths::Vector{Float64},
 end
 
 
-function firing(tmp_strengths::Vector{Float64},firing_method::String)
+function firing(tmp_strengths::Vector{Float64},firing_method::AbstractString)
 	if firing_method == "MIN"
 		return	minimum_value(tmp_strengths)
 	elseif firing_method == "A-PROD"
