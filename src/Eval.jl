@@ -92,7 +92,7 @@ end
 
 function firing(tmp_strengths::Vector{Float64},firing_method::String)
 	if firing_method == "MIN"
-		return	minimum(tmp_strengths)
+		return	minimum_value(tmp_strengths)
 	elseif firing_method == "A-PROD"
 		return algebraic_product(tmp_strengths)
 	elseif firing_method == "B-DIF"
