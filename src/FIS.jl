@@ -12,7 +12,7 @@ type Rule
 	# 		or is a Vector of AbstractFloat containing consequence parameters in case of Sugeno fis
 
 	input_mf_names::Vector{AbstractString}
-	output_mf::Union{Vector{AbstractFloat}, AbstractString}
+	output_mf::Union{Vector{T<:AbstractFloat}, AbstractString}
 
 end
 
