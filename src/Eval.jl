@@ -1,7 +1,7 @@
 # Contains evaluation functions
 # ----------------------------------
 
-function eval_fis(fis::FISMamdani, input_values::Vector{AbstractFloat}; firing_method = "MIN", defuzz_method = "WTAV")
+function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T}; firing_method = "MIN", defuzz_method = "WTAV")
 	# Evaluates the FIS
 	#
 	# Parameters
@@ -24,7 +24,7 @@ function eval_fis(fis::FISMamdani, input_values::Vector{AbstractFloat}; firing_m
 
 end
 
-function eval_fis(fis::FISSugeno,	input_values::Vector{AbstractFloat}; firing_method = "MIN")
+function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T}; firing_method = "MIN")
 	# Evaluates the FIS
 	#
 	# Parameters
@@ -82,7 +82,7 @@ function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	ou
 end
 
 
-function firing(tmp_strengths::Vector{AbstractFloat},firing_method::AbstractString)
+function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::AbstractString)
 	if firing_method == "MIN"
 		return	minimum_value(tmp_strengths)
 	elseif firing_method == "A-PROD"

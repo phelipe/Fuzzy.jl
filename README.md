@@ -77,16 +77,16 @@ julia> eval_fis(fis, in_vals)
 ### Features
 
 -	FIS
-		-	Mamdani
+	-	Mamdani
     -	Sugeno
 -	Membership functions
-		-	Triangular
+	-	Triangular
     -	Gaussian
     -	Bell
     -	Trapezoidal
     -	Sigmoid
 -	Defuzzification
-		-	Mean of Maximum
+	-	Mean of Maximum
   	-	Weighted Average (default)
     -	*Centroid (coming soon)*
 - T-Norm
