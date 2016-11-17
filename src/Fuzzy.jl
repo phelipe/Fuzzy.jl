@@ -6,6 +6,8 @@ module Fuzzy
 
 	export eval_fis
 
+	export minimum_value, algebraic_product, bounded_difference, drastic_product, einstein_product, hamacher_product
+
 	# T-Norm
 	include("T-norm.jl")
 
