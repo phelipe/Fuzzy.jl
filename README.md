@@ -30,7 +30,7 @@ julia> output = {"small" => TriangularMF(1, 2, 3)}
 julia> rule = Rule(["large", "small"], "small")
 julia> rules = [rule]
 ```
-    
+
 -	Create FIS
 
 ```
@@ -58,7 +58,7 @@ julia> rule1 = Rule(["large", "small"], [1.0, 1.0, 1.0])
 julia> rule2 = Rule(["small", "small"], [0.0, 0.0, 5.0])
 julia> rules = [rule]
 ```
-    
+
 -	Create FIS
 
 ```
@@ -87,6 +87,17 @@ julia> eval_fis(fis, in_vals)
 	-	Mean of Maximum
     -	Weighted Average (default)
     -	*Centroid (coming soon)*
+
+
+###Modifications
+- T-Norm
+    - minimum
+    - algebraic product
+    - bounded difference
+    - drastic product
+    - einstein product
+    - hamacher product
+    - nilpotent minimum
 
 ###License
 
