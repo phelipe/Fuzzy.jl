@@ -2,17 +2,17 @@
 # ---------------------------
 #
 
-type Rule{T<:AbstractFloat,V<:AbstractString}
+type Rule{T<:AbstractFloat}
 	# A Rule connecting input and output membership function
 	#
 	# Properties
 	# ----------
-	# `input_mf_names` is a Vector of ASCIIString (in order of inputs) which contains name of membership functions
+	# `input_mf_names` is a Vector of AbstractString (in order of inputs) which contains name of membership functions
 	# `output_mf` is either an AbstractString containing the connected output membership function name with `input_mf_names`
 	# 		or is a Vector of AbstractFloat containing consequence parameters in case of Sugeno fis
 
-	input_mf_names::Vector{V}
-	output_mf::Union{Vector{T}, V}
+	input_mf_names::Vector{AbstractString}
+	output_mf::Union{Vector{T}, AbstractString}
 
 end
 
