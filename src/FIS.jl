@@ -30,8 +30,8 @@ end
 	# 		e.g. "small" => GaussianMF(4, 2)
 	# `rules` is a Vector of Rule that form the inference system
 immutable FISMamdani
-	input_mfs_dicts::Vector{Dict{Any, Any}}
-	output_mfs_dict::Dict{Any, Any}
+	input_mfs_dicts::Vector{Dict{AbstractString, MF}}
+	output_mfs_dict::Dict{AbstractString,MF}
 	rules::Vector{Rule}
 end
 
@@ -45,6 +45,6 @@ end
 	# `rules` is a Vector of Rule (of sugeno type) that form the inference system
 
 immutable FISSugeno
-	input_mfs_dicts::Vector{Dict{Any, Any}}
+	input_mfs_dicts::Vector{Dict{AbstractString, MF}}
 	rules::Vector{Rule}
 end

@@ -1,6 +1,11 @@
 # Contains various membership function types
 # ------------------------------------------
 
+"""	 Membership function type
+"""
+abstract MF
+
+
 """	 Triangular membership function type
 
 	 TriangularMF(l_vertex, center, r_vertex)
@@ -12,7 +17,7 @@
 	 `eval` function returns membership value at a point
 	 `mean_at` function returns mean value at line clipped by given firing strength
 """
-type TriangularMF
+type TriangularMF<:MF
 
 	l_vertex::Real
 	center::Real
@@ -74,7 +79,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type GaussianMF
+type GaussianMF<:MF
 
 	center::Real
 	sigma::Real
@@ -116,7 +121,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type BellMF
+type BellMF<:MF
 
 	a::Real
 	b::Real
@@ -160,7 +165,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type TrapezoidalMF
+type TrapezoidalMF<:MF
 
 	l_bottom_vertex::Real
 	l_top_vertex::Real
@@ -218,7 +223,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type SigmoidMF
+type SigmoidMF<:MF
 
 	a::Real
 	c::Real
