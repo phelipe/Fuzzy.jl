@@ -4,15 +4,14 @@
 [![Build Status](https://travis-ci.org/phelipe/Fuzzy.jl.svg?branch=master)](https://travis-ci.org/phelipe/Fuzzy.jl)
 
 ###Coverage
-[![Coverage Status](https://coveralls.io/repos/phelipe/Fuzzy.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/phelipe/Fuzzy.jl?branch=master)
+[![Coverage Status](https://coveralls.io/repos/phelipe/Fuzzy.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/phelipe/Fuzzy.jl?branch=master) [![codecov.io](http://codecov.io/github/phelipe/Fuzzy.jl/coverage.svg?branch=master)](http://codecov.io/github/phelipe/Fuzzy.jl?branch=master)
 
-[![codecov.io](http://codecov.io/github/phelipe/Fuzzy.jl/coverage.svg?branch=master)](http://codecov.io/github/phelipe/Fuzzy.jl?branch=master)
+Mamdani and Sugeno type Fuzzy Inference System in julia.
+This code is based in [Lepisma](git://github.com/lepisma/Fuzzy.jl.git).
 
-Mamdani and Sugeno type Fuzzy Inference System in julia
+###Install
 
-### Install
-
-`julia> Pkg.clone("git://github.com/lepisma/Fuzzy.jl.git")`
+`julia> Pkg.clone("git://github.com/phelipe/Fuzzy.jl.git")`
 
 ### QuickStart
 
@@ -23,11 +22,11 @@ Mamdani and Sugeno type Fuzzy Inference System in julia
 -	Create input, output membership functions and rules
 
 ```
-julia> input_a = {"small" => Fuzzy.TriangularMF(1, 2, 3), "large" => Fuzzy.TriangularMF(4, 5, 6)}
-julia> input_b = {"small" => Fuzzy.TriangularMF(1, 2, 3)}
+julia> input_a = Dict("small" => Fuzzy.TriangularMF(1, 2, 3), "large" => Fuzzy.TriangularMF(4, 5, 6))
+julia> input_b = Dict("small" => Fuzzy.TriangularMF(1, 2, 3))
 
 julia> inputs = [input_a, input_b]
-julia> output = {"small" => TriangularMF(1, 2, 3)}
+julia> output = Dict("small" => TriangularMF(1, 2, 3))
 
 julia> rule = Rule(["large", "small"], "small")
 julia> rules = [rule]
@@ -51,8 +50,8 @@ julia> eval_fis(fis, in_vals)
 -	Create input membership functions and rules with consequence coefficients
 
 ```
-julia> input_a = {"small" => Fuzzy.TriangularMF(1, 2, 3), "large" => Fuzzy.TriangularMF(5, 6, 7)}
-julia> input_b = {"small" => Fuzzy.TriangularMF(1, 2, 3)}
+julia> input_a = Dict("small" => Fuzzy.TriangularMF(1, 2, 3), "large" => Fuzzy.TriangularMF(5, 6, 7))
+julia> input_b = Dict("small" => Fuzzy.TriangularMF(1, 2, 3))
 
 julia> inputs = [input_a, input_b]
 
@@ -90,12 +89,20 @@ julia> eval_fis(fis, in_vals)
   	-	Weighted Average (default)
     -	*Centroid (coming soon)*
 - T-Norm
-    - minimum (MIN)
-    - algebraic product (A-PROD)
-    - bounded difference (B-DIF)
-    - drastic product (D-PROD)
-    - einstein product (E-PROD)
-    - hamacher product (H-PROD)
+    - Minimum (MIN)
+    - Algebraic product (A-PROD)
+    - Bounded difference (B-DIF)
+    - Drastic product (D-PROD)
+    - Einstein product (E-PROD)
+    - Hamacher product (H-PROD)
+- S-Norm
+    - Maximum (MAX)
+    - Algebraic sum (A-SUM)
+    - Bounded sum (B-SUM)
+    - Drastic sum (D-SUM)
+    - Einstein sum (E-SUM)
+    - Hamacher sum (H-SUM)
+
 
 
 ###License

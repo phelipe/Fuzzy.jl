@@ -16,7 +16,6 @@ module Fuzzy
 	# S-Norm
 	include("S-norm.jl")
 
-
 	# Membership functions
 	include("MF.jl")
 

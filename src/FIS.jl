@@ -2,7 +2,6 @@
 # ---------------------------
 #
 
-immutable Rule
 	# A Rule connecting input and output membership function
 	#
 	# Properties
@@ -10,7 +9,7 @@ immutable Rule
 	# `input_mf_names` is a Vector of AbstractString (in order of inputs) which contains name of membership functions
 	# `output_mf` is either an AbstractString containing the connected output membership function name with `input_mf_names`
 	# 		or is a Vector of AbstractFloat containing consequence parameters in case of Sugeno fis
-
+immutable Rule
 	input_mf_names::Vector{AbstractString}
 	output_mf::Union{Vector{Float64}, AbstractString}
 	firing_method::AbstractString
@@ -18,10 +17,8 @@ immutable Rule
 	function Rule(input_mf_names,output_mf,firing_method="MIN")
 		new(input_mf_names,output_mf,firing_method)
 	end
-
 end
 
-immutable FISMamdani
 	# Fuzzy Inference System of Mamdani type
 	#
 	# Properties
@@ -32,14 +29,12 @@ immutable FISMamdani
 	# `output_mfs_dict` is a Dict containing membership function of output associated with names
 	# 		e.g. "small" => GaussianMF(4, 2)
 	# `rules` is a Vector of Rule that form the inference system
-
+immutable FISMamdani
 	input_mfs_dicts::Vector{Dict{Any, Any}}
 	output_mfs_dict::Dict{Any, Any}
 	rules::Vector{Rule}
-
 end
 
-immutable FISSugeno
 	# Fuzzy Inference System of Mamdani type
 	#
 	# Properties
@@ -49,7 +44,7 @@ immutable FISSugeno
 	# 		e.g. "small" => TriangularMF(1, 2, 3)
 	# `rules` is a Vector of Rule (of sugeno type) that form the inference system
 
+immutable FISSugeno
 	input_mfs_dicts::Vector{Dict{Any, Any}}
 	rules::Vector{Rule}
-
 end
