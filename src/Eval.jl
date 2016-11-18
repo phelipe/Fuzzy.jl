@@ -50,7 +50,7 @@ function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
 
 end
 
-function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dict::Dict{Any, Any}, defuzz_method::AbstractString)
+function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dict::Dict{AbstractString, MF}, defuzz_method::AbstractString)
 	# Defuzzifies the output using the given firing strengths
 	#
 	# Parameters
