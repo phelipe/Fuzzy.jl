@@ -91,5 +91,17 @@ function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::Abstra
 		return einstein_product(tmp_strengths)
 	elseif firing_method == "H-PROD"
 		return hamacher_product(tmp_strengths)
+	elseif firing_method == "MAX"
+		return	maximum_value(tmp_strengths)
+	elseif firing_method == "A-SUM"
+		return algebraic_sum(tmp_strengths)
+	elseif firing_method == "B-SUM"
+		return bounded_sum(tmp_strengths)
+	elseif firing_method == "D-SUM"
+		return drastic_sum(tmp_strengths)
+	elseif firing_method == "E-SUM"
+		return einstein_sum(tmp_strengths)
+	elseif firing_method == "H-SUM"
+		return hamacher_sum(tmp_strengths)
 	end
 end

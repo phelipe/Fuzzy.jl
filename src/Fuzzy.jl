@@ -8,8 +8,14 @@ module Fuzzy
 
 	export minimum_value, algebraic_product, bounded_difference, drastic_product, einstein_product, hamacher_product
 
+	export maximum_value, algebraic_sum, bounded_sum, drastic_sum, einstein_sum, hamacher_sum
+
 	# T-Norm
 	include("T-norm.jl")
+
+	# S-Norm
+	include("S-norm.jl")
+
 
 	# Membership functions
 	include("MF.jl")

@@ -11,7 +11,8 @@ tests = ["triangular_mf.jl",
 		"sigmoid_mf.jl",
 		"fis_mamdani.jl",
 		"fis_sugeno.jl",
-        "t_norm.jl"]
+        "t_norm.jl",
+        "s_norm.jl"]
 
 println("Running test:")
 
