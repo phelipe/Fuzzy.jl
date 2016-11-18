@@ -8,8 +8,6 @@ function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},def
 	# ----------
 	# `fis` is the inference system to evaluate
 	# `input_values` is a Vector of inputs
-	# `firing_method` is the method for finding firing strength
-	# 		Currently supports "MIN" (minimum) and "PROD" (product)
 	# `defuzz_method` is the method for defuzzification, see defuzz function definition
 
 	firing_strengths = AbstractFloat[]
@@ -31,8 +29,6 @@ function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
 	# ----------
 	# `fis` is the inference system to evaluate
 	# `input_values` is a Vector of inputs
-	# `firing_method` is the method for finding firing strength
-	# 		Currently supports "MIN" (minimum) and "PROD" (product)
 
 	firing_strengths = AbstractFloat[]
 	for rule in fis.rules

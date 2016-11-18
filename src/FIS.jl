@@ -2,7 +2,7 @@
 # ---------------------------
 #
 
-type Rule
+immutable Rule
 	# A Rule connecting input and output membership function
 	#
 	# Properties
@@ -21,7 +21,7 @@ type Rule
 
 end
 
-type FISMamdani
+immutable FISMamdani
 	# Fuzzy Inference System of Mamdani type
 	#
 	# Properties
@@ -39,7 +39,7 @@ type FISMamdani
 
 end
 
-type FISSugeno
+immutable FISSugeno
 	# Fuzzy Inference System of Mamdani type
 	#
 	# Properties
