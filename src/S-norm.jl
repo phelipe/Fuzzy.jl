@@ -2,7 +2,7 @@
 
 #"MAX"
 function maximum_value{T<:AbstractFloat}(tmp_strengths::Vector{T})
-   return max(tmp_strengths)
+   return maximum(tmp_strengths)
 end
 
 
