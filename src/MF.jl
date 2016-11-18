@@ -21,7 +21,7 @@ type TriangularMF
 	eval::Function
 	mean_at::Function
 
-	function TriangularMF(l_vertex, center, r_vertex)
+	function TriangularMF{T<:Real}(l_vertex::T, center::T, r_vertex::T)
 
 		if l_vertex <= center <= r_vertex
 
@@ -82,7 +82,7 @@ type GaussianMF
 	eval::Function
 	mean_at::Function
 
-	function GaussianMF(center, sigma)
+	function GaussianMF{T<:Real}(center::T, sigma::T)
 
 		this = new()
 
@@ -125,7 +125,7 @@ type BellMF
 	eval::Function
 	mean_at::Function
 
-	function BellMF(a, b, c)
+	function BellMF{T<:Real}(a::T, b::T, c::T)
 
 		this = new()
 
@@ -170,7 +170,7 @@ type TrapezoidalMF
 	eval::Function
 	mean_at::Function
 
-	function TrapezoidalMF(l_bottom_vertex, l_top_vertex, r_top_vertex, r_bottom_vertex)
+	function TrapezoidalMF{T<:Real}(l_bottom_vertex::T, l_top_vertex::T, r_top_vertex::T, r_bottom_vertex::T)
 
 		if l_bottom_vertex <= l_top_vertex <= r_top_vertex <= r_bottom_vertex
 
@@ -227,7 +227,7 @@ type SigmoidMF
 	eval::Function
 	mean_at::Function
 
-	function SigmoidMF(a, c, limit)
+	function SigmoidMF{T<:Real}(a::T, c::T, limit::T)
 
 		if (a > 0 && limit > c) || (a < 0 && limit < c)
 
