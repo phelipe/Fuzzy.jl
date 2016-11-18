@@ -14,7 +14,7 @@
 """
 immutable TriangularMF
 
-	l_vertex<:Real
+	l_vertex
 	center<:Real
 	r_vertex<:Real
 
