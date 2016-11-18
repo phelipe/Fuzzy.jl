@@ -1,7 +1,7 @@
 # Contains evaluation functions
 # ----------------------------------
 
-function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T}; firing_method = "MIN", defuzz_method = "WTAV")
+function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},defuzz_method = "WTAV")
 	# Evaluates the FIS
 	#
 	# Parameters
@@ -18,13 +18,13 @@ function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T}; fi
 		for i in 1:length(rule.input_mf_names)
 			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
 		end
-			push!(firing_strengths, firing(tmp_strengths,firing_method ))
+			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
 	end
 	defuzz(firing_strengths, fis.rules, fis.output_mfs_dict, defuzz_method)
 
 end
 
-function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T}; firing_method = "MIN")
+function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
 	# Evaluates the FIS
 	#
 	# Parameters
@@ -40,7 +40,7 @@ function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T}; fir
 		for i in 1:length(rule.input_mf_names)
 			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
 		end
-			push!(firing_strengths, firing(tmp_strengths,firing_method ))
+			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
 	end
 
 	push!(input_values, 1)

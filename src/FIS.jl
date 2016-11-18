@@ -13,6 +13,11 @@ type Rule
 
 	input_mf_names::Vector{AbstractString}
 	output_mf::Union{Vector{Float64}, AbstractString}
+	firing_method::AbstractString
+
+	function Rule(input_mf_names,output_mf,firing_method="MIN")
+		new(input_mf_names,output_mf,firing_method)
+	end
 
 end
 
