@@ -12,7 +12,7 @@
 	 `eval` function returns membership value at a point
 	 `mean_at` function returns mean value at line clipped by given firing strength
 """
-immutable TriangularMF
+type TriangularMF
 
 	l_vertex::Real
 	center::Real
@@ -74,7 +74,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-immutable GaussianMF
+type GaussianMF
 
 	center::Real
 	sigma::Real
@@ -116,7 +116,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-immutable BellMF
+type BellMF
 
 	a::Real
 	b::Real
@@ -160,7 +160,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-immutable TrapezoidalMF
+type TrapezoidalMF
 
 	l_bottom_vertex::Real
 	l_top_vertex::Real
@@ -218,7 +218,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-immutable SigmoidMF
+type SigmoidMF
 
 	a::Real
 	c::Real
