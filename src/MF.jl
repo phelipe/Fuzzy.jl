@@ -14,9 +14,9 @@
 """
 immutable TriangularMF
 
-	l_vertex
-	center<:Real
-	r_vertex<:Real
+	l_vertex::Real
+	center::Real
+	r_vertex::Real
 
 	eval::Function
 	mean_at::Function
@@ -76,8 +76,8 @@ end
 """
 immutable GaussianMF
 
-	center<:Real
-	sigma<:Real
+	center::Real
+	sigma::Real
 
 	eval::Function
 	mean_at::Function
@@ -118,9 +118,9 @@ end
 """
 immutable BellMF
 
-	a<:Real
-	b<:Real
-	c<:Real
+	a::Real
+	b::Real
+	c::Real
 
 	eval::Function
 	mean_at::Function
@@ -162,10 +162,10 @@ end
 """
 immutable TrapezoidalMF
 
-	l_bottom_vertex<:Real
-	l_top_vertex<:Real
-	r_top_vertex<:Real
-	r_bottom_vertex<:Real
+	l_bottom_vertex::Real
+	l_top_vertex::Real
+	r_top_vertex::Real
+	r_bottom_vertex::Real
 
 	eval::Function
 	mean_at::Function
@@ -220,9 +220,9 @@ end
 """
 immutable SigmoidMF
 
-	a<:Real
-	c<:Real
-	limit<:Real
+	a::Real
+	c::Real
+	limit::Real
 
 	eval::Function
 	mean_at::Function
