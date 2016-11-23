@@ -22,8 +22,8 @@ This code is based in [Lepisma](git://github.com/lepisma/Fuzzy.jl.git).
 -	Create input, output membership functions and rules
 
 ```
-julia> input_a = Dict("small" => Fuzzy.TriangularMF(1, 2, 3), "large" => Fuzzy.TriangularMF(4, 5, 6))
-julia> input_b = Dict("small" => Fuzzy.TriangularMF(1, 2, 3))
+julia> input_a = Dict("small" => TriangularMF(1, 2, 3), "large" => TriangularMF(4, 5, 6))
+julia> input_b = Dict("small" => TriangularMF(1, 2, 3))
 
 julia> inputs = [input_a, input_b]
 julia> output = Dict("small" => TriangularMF(1, 2, 3))
@@ -50,8 +50,8 @@ julia> eval_fis(fis, in_vals)
 -	Create input membership functions and rules with consequence coefficients
 
 ```
-julia> input_a = Dict("small" => Fuzzy.TriangularMF(1, 2, 3), "large" => Fuzzy.TriangularMF(5, 6, 7))
-julia> input_b = Dict("small" => Fuzzy.TriangularMF(1, 2, 3))
+julia> input_a = Dict("small" => TriangularMF(1, 2, 3), "large" => TriangularMF(5, 6, 7))
+julia> input_b = Dict("small" => TriangularMF(1, 2, 3))
 
 julia> inputs = [input_a, input_b]
 

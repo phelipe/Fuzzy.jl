@@ -1,4 +1,3 @@
-#TODO: fazer testes das T-normas
 
 
 #"MIN"

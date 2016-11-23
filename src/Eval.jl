@@ -1,14 +1,18 @@
 # Contains evaluation functions
 # ----------------------------------
+"""
+	 Evaluates the FIS
 
+	eval_fis(fis, input_values,defuzz_method = "WTAV")
+
+	 Parameters
+	 ----------
+	 `fis` is the inference system to evaluate
+	 `input_values` is a Vector of inputs
+	 `defuzz_method` is the method for defuzzification, see defuzz function definition
+
+"""
 function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},defuzz_method = "WTAV")
-	# Evaluates the FIS
-	#
-	# Parameters
-	# ----------
-	# `fis` is the inference system to evaluate
-	# `input_values` is a Vector of inputs
-	# `defuzz_method` is the method for defuzzification, see defuzz function definition
 
 	firing_strengths = AbstractFloat[]
 	for rule in fis.rules
@@ -22,13 +26,18 @@ function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},def
 
 end
 
+"""
+	 Evaluates the FIS
+
+	eval_fis(fis, input_values)
+
+	 Parameters
+	 ----------
+	 `fis` is the inference system to evaluate
+	 `input_values` is a Vector of inputs
+
+"""
 function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
-	# Evaluates the FIS
-	#
-	# Parameters
-	# ----------
-	# `fis` is the inference system to evaluate
-	# `input_values` is a Vector of inputs
 
 	firing_strengths = AbstractFloat[]
 	for rule in fis.rules
@@ -50,18 +59,23 @@ function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
 
 end
 
+"""
+	 Defuzzifies the output using the given firing strengths
+
+	defuzz(firing_strengths, rules, output_mfs_dict, defuzz_method)
+
+	 Parameters
+	 ----------
+	 `firing_strengths` is a Vector of firing strengths
+	 		one for each output membership function
+	 `rules` is a Vector of Rule
+	 `output_mfs_dict` is a Dict of output membership functions
+	 `defuzz_method` is the method for defuzzification
+	 		"MOM" - Mean of Maximum
+	 		"WTAV" - Weighted Average
+"""
 function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dict::Dict{AbstractString, MF}, defuzz_method::AbstractString)
-	# Defuzzifies the output using the given firing strengths
-	#
-	# Parameters
-	# ----------
-	# `firing_strengths` is a Vector of firing strengths
-	# 		one for each output membership function
-	# `rules` is a Vector of Rule
-	# `output_mfs_dict` is a Dict of output membership functions
-	# `defuzz_method` is the method for defuzzification
-	# 		"MOM" - Mean of Maximum
-	# 		"WTAV" - Weighted Average
+
 
 	if defuzz_method == "MOM"
 		max_firing_index = indmax(firing_strengths)
@@ -77,7 +91,9 @@ function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	ou
 
 end
 
-
+"""
+	 Docs goes here
+"""
 function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::AbstractString)
 	if firing_method == "MIN"
 		return	minimum_value(tmp_strengths)
