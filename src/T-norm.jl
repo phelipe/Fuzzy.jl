@@ -1,16 +1,29 @@
+# Contains T-norms
+# ----------------------------------
+"""
+	Compute the minimum value of the tmp_strengths vector
 
-
-#"MIN"
+    minimum_value(tmp_strengths<:AbstractFloat)
+"""
 function minimum_value{T<:AbstractFloat}(tmp_strengths::Vector{T})
     return minimum(tmp_strengths)
 end
 
-#"A-PROD"
+
+"""
+	Compute the algebraic product of the tmp_strengths vector
+
+    algebraic_product(tmp_strengths<:AbstractFloat)
+"""
 function algebraic_product{T<:AbstractFloat}(tmp_strengths::Vector{T})
     return prod(tmp_strengths)
 end
 
-#"B-DIF"
+"""
+	Compute the bounded difference of the tmp_strengths vector
+
+    bounded_difference(tmp_strengths<:AbstractFloat)
+"""
 function bounded_difference{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -23,7 +36,11 @@ function bounded_difference{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"D-PROD"
+"""
+	Compute the drastic product of the tmp_strengths vector
+
+    drastic_product(tmp_strengths<:AbstractFloat)
+"""
 function drastic_product{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -40,7 +57,11 @@ function drastic_product{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"E-PROD"
+"""
+	Compute the Einstein product of the tmp_strengths vector
+
+    einstein_product(tmp_strengths<:AbstractFloat)
+"""
 function einstein_product{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -53,7 +74,11 @@ function einstein_product{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"H-PROD"
+"""
+	Compute the Hamacher product of the tmp_strengths vector
+
+    hamacher_product(tmp_strengths<:AbstractFloat)
+"""
 function hamacher_product{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]

@@ -1,12 +1,21 @@
+# Contains S-norms
+# ----------------------------------
 
+"""
+	Compute the maximum value of the tmp_strengths vector
 
-#"MAX"
+    maximum_value(tmp_strengths<:AbstractFloat)
+"""
 function maximum_value{T<:AbstractFloat}(tmp_strengths::Vector{T})
    return maximum(tmp_strengths)
 end
 
 
-#"A-SUM"
+"""
+	Compute the algebraic sum of the tmp_strengths vector
+
+    algebraic_sum(tmp_strengths<:AbstractFloat)
+"""
 function algebraic_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -19,7 +28,11 @@ function algebraic_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"B-SUM"
+"""
+	Compute the bounded sum of the tmp_strengths vector
+
+    bounded_sum(tmp_strengths<:AbstractFloat)
+"""
 function bounded_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -32,7 +45,11 @@ function bounded_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"D-SUM"
+"""
+	Compute the drastic sum of the tmp_strengths vector
+
+    drastic_sum(tmp_strengths<:AbstractFloat)
+"""
 function drastic_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -49,7 +66,11 @@ function drastic_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"E-SUM"
+"""
+	Compute the Einstein sum of the tmp_strengths vector
+
+    einstein_sum(tmp_strengths<:AbstractFloat)
+"""
 function einstein_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
@@ -62,7 +83,11 @@ function einstein_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     end
 end
 
-#"H-SUM"
+"""
+	Compute the Hamacher sum of the tmp_strengths vector
+
+    hamacher_sum(tmp_strengths<:AbstractFloat)
+"""
 function hamacher_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
