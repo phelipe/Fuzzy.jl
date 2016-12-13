@@ -1,6 +1,6 @@
 # Fuzzy
 
-Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in ![Lepisma](git://github.com/lepisma/Fuzzy.jl.git).
+Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in [Lepisma](https://github.com/lepisma/Fuzzy.jl).
 
 ## Build
 
