@@ -22,7 +22,7 @@ function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},def
 		end
 			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
 	end
-	defuzz(firing_strengths, fis.rules, fis.output_mfs_dict, defuzz_method)
+	defuzz(firing_strengths, fis.rules, fis.output_mfs_dicts, defuzz_method)
 
 end
 
@@ -69,24 +69,30 @@ end
 	 `firing_strengths` is a Vector of firing strengths
 	 		one for each output membership function
 	 `rules` is a Vector of Rule
-	 `output_mfs_dict` is a Dict of output membership functions
+	 `output_mfs_dicts` is a Vector of Dict of output membership functions
 	 `defuzz_method` is the method for defuzzification
 	 		"MOM" - Mean of Maximum
 	 		"WTAV" - Weighted Average
 """
-function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dict::Dict{AbstractString, MF}, defuzz_method::AbstractString)
+function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dicts::Array{Dict{AbstractString, MF}}, defuzz_method::AbstractString)
 
-
+# NOTE aqui coloquei o mom para ser mimo, ainda falta o WTAV
 	if defuzz_method == "MOM"
 		max_firing_index = indmax(firing_strengths)
-		max_fired_mf_name = rules[max_firing_index].output_mf
-		output_mfs_dict[max_fired_mf_name].mean_at(maximum(firing_strengths))
+		result = AbstractFloat[]
+		for i in 1: length(rules[max_firing_index].output_mf)
+			max_fired_mf_name = rules[max_firing_index].output_mf[i]
+			push!(result,output_mfs_dicts[i][max_fired_mf_name].mean_at(maximum(firing_strengths)))
+		end
+		return result
 	elseif defuzz_method == "WTAV"
+
 		mean_vec = AbstractFloat[]
 		for i in 1:length(rules)
-			push!(mean_vec, output_mfs_dict[rules[i].output_mf].mean_at(firing_strengths[i]))
+			push!(mean_vec, output_mfs_dicts[rules[i].output_mf].mean_at(firing_strengths[i]))
 		end
 		(mean_vec' * firing_strengths)[1] / sum(firing_strengths)
+		
 	end
 
 end
