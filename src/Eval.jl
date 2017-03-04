@@ -51,7 +51,6 @@ function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
 	push!(input_values, 1)
 	n_firing_strengths = firing_strengths / sum(firing_strengths)
     out=zeros(length(fis.rules[1].output_mf))
-    println("O valor de out é $(out)")
     for i = 1: length(out)
         for j = 1:length(fis.rules)
 		    out[i] += n_firing_strengths[j] * dot(fis.rules[j].output_mf[i] , input_values)
@@ -79,7 +78,6 @@ end
 """
 function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	output_mfs_dicts::Array{Dict{AbstractString, MF}}, defuzz_method::AbstractString)
 
-# NOTE aqui coloquei o mom para ser mimo, ainda falta o WTAV
 	if defuzz_method == "MOM"
 		max_firing_index = indmax(firing_strengths)
 		result = AbstractFloat[]
@@ -89,13 +87,15 @@ function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	ou
 		end
 		return result
 	elseif defuzz_method == "WTAV"
-
+        out=AbstractFloat[]
+        for i in 1:length(rules[1].output_mf)
 		mean_vec = AbstractFloat[]
-		for i in 1:length(rules)
-			push!(mean_vec, output_mfs_dicts[rules[i].output_mf].mean_at(firing_strengths[i]))
-		end
-		(mean_vec' * firing_strengths)[1] / sum(firing_strengths)
-
+		    for j in 1:length(rules)
+			    push!(mean_vec, output_mfs_dicts[i][rules[j].output_mf[i]].mean_at(firing_strengths[j]))
+		    end
+		push!(out, (mean_vec' * firing_strengths)[1] / sum(firing_strengths))
+        end
+        out
 	end
 
 end

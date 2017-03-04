@@ -52,5 +52,3 @@ immutable FISSugeno
 	input_mfs_dicts::Vector{Dict{AbstractString, MF}}
 	rules::Vector{Rule}
 end
-
-#TODO colocar o sugeno para ser mimo também
