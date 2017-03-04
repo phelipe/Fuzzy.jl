@@ -88,6 +88,7 @@ julia> eval_fis(fis, in_vals)
   - Bell
   - Trapezoidal
   - Sigmoid
+  - Singleton
 
 - Defuzzification
 

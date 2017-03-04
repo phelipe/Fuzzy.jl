@@ -64,7 +64,6 @@ type TriangularMF<:MF
 
 end
 
-#TODO adicionar no readme esse novo conjunto
 """	 Singleton membership function type
 
 	 SingletonMF(value)
