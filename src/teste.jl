@@ -34,4 +34,10 @@ println( Fuzzy.eval_fis(fis, ival1,"MOM"))# == 2.0
 println( Fuzzy.eval_fis(fis, ival2,"MOM"))# == 6.0
 
 
-#TODO fazr testes do sistema mimo sugeno
+#Testes do sistema mimo sugeno
+rule1_s = Fuzzy.Rule(["large", "small"],[ [1.0, 0.0, 1.0],[1.0, 1.0, 1.0],[3.0, 1.0, 1.0]])
+rule2_s = Fuzzy.Rule(["small", "small"],[ [1.0, 1.0, 5.0],[0.0, 0.0, 5.0],[1.0, 0.0, 5.0]])
+rules_s = [rule1_s, rule2_s]
+ fis_s = Fuzzy.FISSugeno(ips, rules_s)
+ in_vals = [2.3, 1.2]
+ Fuzzy.eval_fis(fis_s, in_vals)#= 8.5,5,7.3

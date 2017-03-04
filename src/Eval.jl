@@ -50,10 +50,13 @@ function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
 
 	push!(input_values, 1)
 	n_firing_strengths = firing_strengths / sum(firing_strengths)
-	out = 0.0
-	for i = 1:length(fis.rules)
-		out += n_firing_strengths[i] * (fis.rules[i].output_mf' * input_values)[1]
-	end
+    out=zeros(length(fis.rules[1].output_mf))
+    println("O valor de out é $(out)")
+    for i = 1: length(out)
+        for j = 1:length(fis.rules)
+		    out[i] += n_firing_strengths[j] * dot(fis.rules[j].output_mf[i] , input_values)
+	    end
+    end
 	pop!(input_values)
 	return out
 
@@ -92,7 +95,7 @@ function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	ou
 			push!(mean_vec, output_mfs_dicts[rules[i].output_mf].mean_at(firing_strengths[i]))
 		end
 		(mean_vec' * firing_strengths)[1] / sum(firing_strengths)
-		
+
 	end
 
 end

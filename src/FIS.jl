@@ -12,7 +12,7 @@
 """
 immutable Rule
 	input_mf_names::Vector{AbstractString}
-	output_mf::Union{Vector{Float64}, Vector{AbstractString}}
+	output_mf::Union{Vector{Vector{Float64}}, Vector{String}}
 	firing_method::AbstractString
 
 	function Rule(input_mf_names,output_mf,firing_method="MIN")
