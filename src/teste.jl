@@ -1,5 +1,4 @@
 include("Fuzzy.jl")
-#TODO fazr testes do sistema mimo
 
 ipa = Dict()
 ipb = Dict()
@@ -33,3 +32,6 @@ ival2 = [5.7, 2.0]
 
 println( Fuzzy.eval_fis(fis, ival1,"MOM"))# == 2.0
 println( Fuzzy.eval_fis(fis, ival2,"MOM"))# == 6.0
+
+
+#TODO fazr testes do sistema mimo sugeno

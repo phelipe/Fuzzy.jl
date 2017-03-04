@@ -12,7 +12,6 @@
 """
 immutable Rule
 	input_mf_names::Vector{AbstractString}
-	#NOTE verificar esse erro do abstract string aqui, parece que só funciona com ASCIIString
 	output_mf::Union{Vector{Float64}, Vector{AbstractString}}
 	firing_method::AbstractString
 

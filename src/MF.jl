@@ -64,6 +64,50 @@ type TriangularMF<:MF
 
 end
 
+#TODO adicionar no readme esse novo conjunto
+"""	 Singleton membership function type
+
+	 SingletonMF(value)
+
+	 Properties
+	 ----------
+	 `value` The value for which the membership is 1
+
+	 `eval` function returns membership value at a point
+	 `mean_at` function returns mean value at line clipped by given firing strength
+"""
+type SingletonMF<:MF
+
+	value::Real
+
+	eval::Function
+	mean_at::Function
+
+	function SingletonMF{T<:Real}(value::T)
+
+		this = new()
+        this.value = value
+
+		this.eval = function eval(x)
+            if x==this.value
+                1
+            else
+                0
+            end
+		end
+
+		this.mean_at = function mean_at(firing_strength)
+            this.value
+		end
+
+			this
+
+
+	end
+
+end
+
+
 
 """
  Gaussian membership function type
