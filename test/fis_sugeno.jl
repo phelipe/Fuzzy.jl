@@ -1,7 +1,6 @@
 ipa = Dict()
 ipb = Dict()
-opa = Dict()
-opb = Dict()
+
 
 # Input membership functions
 ipa["small"] = TriangularMF(1, 2, 3)

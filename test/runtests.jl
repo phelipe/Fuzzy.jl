@@ -5,7 +5,7 @@
 using Fuzzy
 
 tests = ["triangular_mf.jl",
-        "singleton_mf.jl"
+        "singleton_mf.jl",
 		"gaussian_mf.jl",
 		"trapezoidal_mf.jl",
 		"bell_mf.jl",
