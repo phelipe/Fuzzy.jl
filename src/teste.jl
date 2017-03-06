@@ -47,3 +47,5 @@ rules_s = [rule1_s, rule2_s]
  in_vals = [2.3, 1.2]
  Fuzzy.eval_fis(fis_s, in_vals)# 8.5,5,7.3
 =#
+
+#TODO adicionar teste para mandani, sugeno mimo e para MF singleton
