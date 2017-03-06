@@ -1,5 +1,7 @@
 ipa = Dict()
 ipb = Dict()
+opa = Dict()
+opb = Dict()
 ops = Dict()
 
 # Input membership functions
