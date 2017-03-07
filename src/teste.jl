@@ -29,23 +29,24 @@ fis = Fuzzy.FISMamdani(ips, ops, rules)
 # Input values
 ival1 = [1.2, 2.3]
 ival2 = [5.7, 2.0]
-
-
+#=
+println("WTAV method")
 println( Fuzzy.eval_fis(fis, ival1))# == 2.0
 println( Fuzzy.eval_fis(fis, ival2))# == 6.0
 
-
-#println( Fuzzy.eval_fis(fis, ival1,"MOM"))# == 2.0
-#println( Fuzzy.eval_fis(fis, ival2,"MOM"))# == 6.0
-
-#=
-#Testes do sistema mimo sugeno
-rule1_s = Fuzzy.Rule(["large", "small"],[ [1.0, 0.0, 1.0],[1.0, 1.0, 1.0],[3.0, 1.0, 1.0]])
-rule2_s = Fuzzy.Rule(["small", "small"],[ [1.0, 1.0, 5.0],[0.0, 0.0, 5.0],[1.0, 0.0, 5.0]])
-rules_s = [rule1_s, rule2_s]
- fis_s = Fuzzy.FISSugeno(ips, rules_s)
- in_vals = [2.3, 1.2]
- Fuzzy.eval_fis(fis_s, in_vals)# 8.5,5,7.3
+println("MOM method")
+println( Fuzzy.eval_fis(fis, ival1,"MOM"))# == 2.0
+println( Fuzzy.eval_fis(fis, ival2,"MOM"))# == 6.0
 =#
 
-#TODO adicionar teste para mandani, sugeno mimo e para MF singleton
+#Testes do sistema mimo sugeno
+rule1_s = Fuzzy.Rule(["large", "small"],[ [1.0, 0.0, 1.0],[1.0, 1.0, 1.0],[1.0, 0.0, 0.0, 5.0]])
+rule2_s = Fuzzy.Rule(["small", "small"],[ [1.0, 1.0, 5.0],[0.0, 0.0, 5.0],[0.0,0.0,1.2]])
+rules_s = [rule1_s, rule2_s]
+ fis_s = Fuzzy.FISSugeno(ips, rules_s)
+ in_vals = [2., 2.5]
+ Fuzzy.eval_fis(fis_s, in_vals)# 8.5,5,7.3
+
+
+#TODO adicionar método do centro de gravidade
+#TODO implementar fuzzy segeno ordem > ou = 2

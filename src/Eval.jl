@@ -13,23 +13,25 @@
 
 """
 function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},defuzz_method = "WTAV")
-
-	firing_strengths = AbstractFloat[]
-	for rule in fis.rules
-		tmp_strengths = AbstractFloat[]
-		for i in 1:length(rule.input_mf_names)
-			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
-		end
-			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
-	end
-	defuzz(firing_strengths, fis.rules, fis.output_mfs_dicts, defuzz_method)
-
+    if length(input_values)!= length(fis.input_mfs_dicts)
+        error("The system input has dimension $(length(fis.input_mfs_dicts)) not $(length(input_values))")
+    else
+        firing_strengths = AbstractFloat[]
+    	for rule in fis.rules
+    		tmp_strengths = AbstractFloat[]
+    		for i in 1:length(rule.input_mf_names)
+    			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
+    		end
+    			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
+    	end
+    	defuzz(firing_strengths, fis.rules, fis.output_mfs_dicts, defuzz_method)
+    end
 end
 
 """
 	 Evaluates the FIS
 
-	eval_fis(fis, input_values)
+	 eval_fis(fis, input_values)
 
 	 Parameters
 	 ----------
@@ -38,41 +40,43 @@ end
 
 """
 function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
+    if length(input_values)!= length(fis.input_mfs_dicts)
+        error("The system input has dimension $(length(fis.input_mfs_dicts)) not $(length(input_values))")
+    else
+    	firing_strengths = AbstractFloat[]
+    	for rule in fis.rules
+    		tmp_strengths = AbstractFloat[]
+    		for i in 1:length(rule.input_mf_names)
+    			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
+    		end
+    			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
+    	end
 
-	firing_strengths = AbstractFloat[]
-	for rule in fis.rules
-		tmp_strengths = AbstractFloat[]
-		for i in 1:length(rule.input_mf_names)
-			push!(tmp_strengths, fis.input_mfs_dicts[i][rule.input_mf_names[i]].eval(input_values[i]))
-		end
-			push!(firing_strengths, firing(tmp_strengths,rule.firing_method ))
-	end
-
-	push!(input_values, 1)
-	n_firing_strengths = firing_strengths / sum(firing_strengths)
-    out=zeros(length(fis.rules[1].output_mf))
-    for i = 1: length(out)
-        for j = 1:length(fis.rules)
-		    out[i] += n_firing_strengths[j] * dot(fis.rules[j].output_mf[i] , input_values)
-	    end
+    	push!(input_values, 1)
+    	n_firing_strengths = firing_strengths / sum(firing_strengths)
+        out=zeros(length(fis.rules[1].output_mf))
+        for i = 1: length(out)
+            for j = 1:length(fis.rules)
+    		    out[i] += n_firing_strengths[j] * dot(fis.rules[j].output_mf[i] , input_values)
+    	    end
+        end
+    	pop!(input_values)
+    	return out
     end
-	pop!(input_values)
-	return out
-
 end
 
 """
-	 Defuzzifies the output using the given firing strengths
+	Defuzzifies the output using the given firing strengths
 
 	defuzz(firing_strengths, rules, output_mfs_dict, defuzz_method)
 
-	 Parameters
+	Parameters
 	 ----------
-	 `firing_strengths` is a Vector of firing strengths
-	 		one for each output membership function
-	 `rules` is a Vector of Rule
-	 `output_mfs_dicts` is a Vector of Dict of output membership functions
-	 `defuzz_method` is the method for defuzzification
+	`firing_strengths` is a Vector of firing strengths
+	    one for each output membership function
+	`rules` is a Vector of Rule
+	`output_mfs_dicts` is a Vector of Dict of output membership functions
+	`defuzz_method` is the method for defuzzification
 	 		"MOM" - Mean of Maximum
 	 		"WTAV" - Weighted Average
 """
@@ -100,9 +104,7 @@ function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	ou
 
 end
 
-"""
-	 Docs goes here
-"""
+
 function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::AbstractString)
 	if firing_method == "MIN"
 		return	minimum_value(tmp_strengths)

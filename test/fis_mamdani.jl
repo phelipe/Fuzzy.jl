@@ -30,3 +30,5 @@ ival2 = [5.7, 2.0]
 
 @assert eval_fis(fis, ival1) == [2.0, 2.0]
 @assert eval_fis(fis, ival2) == [6.0, 6.0]
+@assert eval_fis(fis, ival1,"MOM") == [2.0, 2.0]
+@assert eval_fis(fis, ival2,"MOM") == [6.0, 6.0]
