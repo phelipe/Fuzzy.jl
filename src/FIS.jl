@@ -13,9 +13,9 @@
 immutable Rule
 	input_mf_names::Vector{AbstractString}
 	output_mf::Union{Vector{Vector{Float64}}, Vector{String}}
-	firing_method::AbstractString
+	firing_method::Symbol
 
-	function Rule(input_mf_names,output_mf,firing_method="MIN")
+	function Rule(input_mf_names,output_mf,firing_method=:minimum_value)
 		new(input_mf_names,output_mf,firing_method)
 	end
 end

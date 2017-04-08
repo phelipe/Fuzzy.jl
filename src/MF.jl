@@ -112,7 +112,7 @@ end
  Gaussian membership function type
 
 	GaussianMF(center, sigma)
-
+t
 	 Properties
 	 ----------
 	 `center` is the center of the distribution

@@ -104,31 +104,24 @@ function defuzz(firing_strengths::Vector{AbstractFloat}, rules::Vector{Rule},	ou
 
 end
 
-
-function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::AbstractString)
-	if firing_method == "MIN"
-		return	minimum_value(tmp_strengths)
-	elseif firing_method == "A-PROD"
-		return algebraic_product(tmp_strengths)
-	elseif firing_method == "B-DIF"
-		return bounded_difference(tmp_strengths)
-	elseif firing_method == "D-PROD"
-		return drastic_product(tmp_strengths)
-	elseif firing_method == "E-PROD"
-		return einstein_product(tmp_strengths)
-	elseif firing_method == "H-PROD"
-		return hamacher_product(tmp_strengths)
-	elseif firing_method == "MAX"
-		return	maximum_value(tmp_strengths)
-	elseif firing_method == "A-SUM"
-		return algebraic_sum(tmp_strengths)
-	elseif firing_method == "B-SUM"
-		return bounded_sum(tmp_strengths)
-	elseif firing_method == "D-SUM"
-		return drastic_sum(tmp_strengths)
-	elseif firing_method == "E-SUM"
-		return einstein_sum(tmp_strengths)
-	elseif firing_method == "H-SUM"
-		return hamacher_sum(tmp_strengths)
-	end
+function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::Symbol)
+    try
+    f=eval(firing_method)
+    return f(tmp_strengths)
+    catch
+        error("$(firing_method) is not one option! Possible options are in the vector: \n $(methods)")
+    end
 end
+
+const methods = [:minimum_value,
+                 :algebraic_product,
+                 :bounded_difference,
+                 :drastic_product,
+                 :einstein_product,
+                 :hamacher_product,
+                 :maximum_value,
+                 :algebraic_sum,
+                 :bounded_sum,
+                 :drastic_sum,
+                 :einstein_sum,
+                 :hamacher_sum]
