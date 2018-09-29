@@ -113,6 +113,9 @@ julia> eval_fis(fis, in_vals)
   - Einstein sum (E-SUM)
   - Hamacher sum (H-SUM)
 
+## TODO
+ - [ ] update to 1.0 
+
 ## License
 
 MIT
