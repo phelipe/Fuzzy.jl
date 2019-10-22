@@ -12,7 +12,7 @@
 	 `defuzz_method` is the method for defuzzification, see defuzz function definition
 
 """
-function eval_fis{T<:AbstractFloat}(fis::FISMamdani, input_values::Vector{T},defuzz_method = "WTAV")
+function eval_fis(fis::FISMamdani, input_values::Vector{<:AbstractFloat},defuzz_method = "WTAV")
 
 	firing_strengths = AbstractFloat[]
 	for rule in fis.rules
@@ -37,7 +37,7 @@ end
 	 `input_values` is a Vector of inputs
 
 """
-function eval_fis{T<:AbstractFloat}(fis::FISSugeno,	input_values::Vector{T})
+function eval_fis(fis::FISSugeno, input_values::Vector{<:AbstractFloat})
 
 	firing_strengths = AbstractFloat[]
 	for rule in fis.rules
@@ -94,7 +94,7 @@ end
 """
 	 Docs goes here
 """
-function firing{T<:AbstractFloat}(tmp_strengths::Vector{T},firing_method::AbstractString)
+function firing(tmp_strengths::Vector{<:AbstractFloat},firing_method::AbstractString)
 	if firing_method == "MIN"
 		return	minimum_value(tmp_strengths)
 	elseif firing_method == "A-PROD"

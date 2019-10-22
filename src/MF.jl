@@ -3,7 +3,7 @@
 
 """	 Membership function type
 """
-abstract MF
+abstract type MF end
 
 
 """	 Triangular membership function type
@@ -17,7 +17,7 @@ abstract MF
 	 `eval` function returns membership value at a point
 	 `mean_at` function returns mean value at line clipped by given firing strength
 """
-type TriangularMF<:MF
+mutable struct TriangularMF<:MF
 
 	l_vertex::Real
 	center::Real
@@ -26,7 +26,7 @@ type TriangularMF<:MF
 	eval::Function
 	mean_at::Function
 
-	function TriangularMF{T<:Real}(l_vertex::T, center::T, r_vertex::T)
+	function TriangularMF(l_vertex::Real, center::Real, r_vertex::Real)
 
 		if l_vertex <= center <= r_vertex
 
@@ -79,7 +79,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type GaussianMF<:MF
+mutable struct GaussianMF<:MF
 
 	center::Real
 	sigma::Real
@@ -87,7 +87,7 @@ type GaussianMF<:MF
 	eval::Function
 	mean_at::Function
 
-	function GaussianMF{T<:Real}(center::T, sigma::T)
+	function GaussianMF(center::Real, sigma::Real)
 
 		this = new()
 
@@ -121,7 +121,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type BellMF<:MF
+mutable struct BellMF<:MF
 
 	a::Real
 	b::Real
@@ -130,7 +130,7 @@ type BellMF<:MF
 	eval::Function
 	mean_at::Function
 
-	function BellMF{T<:Real}(a::T, b::T, c::T)
+	function BellMF(a::Real, b::Real, c::Real)
 
 		this = new()
 
@@ -165,7 +165,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type TrapezoidalMF<:MF
+mutable struct TrapezoidalMF<:MF
 
 	l_bottom_vertex::Real
 	l_top_vertex::Real
@@ -175,7 +175,7 @@ type TrapezoidalMF<:MF
 	eval::Function
 	mean_at::Function
 
-	function TrapezoidalMF{T<:Real}(l_bottom_vertex::T, l_top_vertex::T, r_top_vertex::T, r_bottom_vertex::T)
+	function TrapezoidalMF(l_bottom_vertex::Real, l_top_vertex::Real, r_top_vertex::Real, r_bottom_vertex::Real)
 
 		if l_bottom_vertex <= l_top_vertex <= r_top_vertex <= r_bottom_vertex
 
@@ -223,7 +223,7 @@ end
 	 `mean_at` function returns mean value at line clipped by given firing strength
 
 """
-type SigmoidMF<:MF
+mutable struct SigmoidMF<:MF
 
 	a::Real
 	c::Real
@@ -232,7 +232,7 @@ type SigmoidMF<:MF
 	eval::Function
 	mean_at::Function
 
-	function SigmoidMF{T<:Real}(a::T, c::T, limit::T)
+	function SigmoidMF(a::Real, c::Real, limit::Real)
 
 		if (a > 0 && limit > c) || (a < 0 && limit < c)
 

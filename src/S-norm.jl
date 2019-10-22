@@ -6,7 +6,7 @@
 
     maximum_value(tmp_strengths<:AbstractFloat)
 """
-function maximum_value{T<:AbstractFloat}(tmp_strengths::Vector{T})
+function maximum_value(tmp_strengths::Vector{<:AbstractFloat})
    return maximum(tmp_strengths)
 end
 
@@ -16,7 +16,7 @@ end
 
     algebraic_sum(tmp_strengths<:AbstractFloat)
 """
-function algebraic_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
+function algebraic_sum(tmp_strengths::Vector{<:AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
@@ -33,7 +33,7 @@ end
 
     bounded_sum(tmp_strengths<:AbstractFloat)
 """
-function bounded_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
+function bounded_sum(tmp_strengths::Vector{<:AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
@@ -50,7 +50,7 @@ end
 
     drastic_sum(tmp_strengths<:AbstractFloat)
 """
-function drastic_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
+function drastic_sum(tmp_strengths::Vector{<:AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i = 2:length(tmp_strengths)
@@ -71,7 +71,7 @@ end
 
     einstein_sum(tmp_strengths<:AbstractFloat)
 """
-function einstein_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
+function einstein_sum(tmp_strengths::Vector{<:AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
@@ -88,7 +88,7 @@ end
 
     hamacher_sum(tmp_strengths<:AbstractFloat)
 """
-function hamacher_sum{T<:AbstractFloat}(tmp_strengths::Vector{T})
+function hamacher_sum(tmp_strengths::Vector{<:AbstractFloat})
     if  length(tmp_strengths) > 1
         val = tmp_strengths[1]
         for i=2:length(tmp_strengths)
