@@ -10,7 +10,7 @@
 	# `output_mf` is either an AbstractString containing the connected output membership function name with `input_mf_names`
 	# 		or is a Vector of AbstractFloat containing consequence parameters in case of Sugeno fis
 '''
-immutable Rule
+struct Rule
 	input_mf_names::Vector{AbstractString}
 	output_mf::Union{Vector{Float64}, AbstractString}
 	firing_method::AbstractString
@@ -32,7 +32,7 @@ end
 	# 		e.g. "small" => GaussianMF(4, 2)
 	# `rules` is a Vector of Rule that form the inference system
 '''
-immutable FISMamdani
+struct FISMamdani
 	input_mfs_dicts::Vector{Dict{AbstractString, MF}}
 	output_mfs_dict::Dict{AbstractString,MF}
 	rules::Vector{Rule}
@@ -48,7 +48,7 @@ end
 	# 		e.g. "small" => TriangularMF(1, 2, 3)
 	# `rules` is a Vector of Rule (of sugeno type) that form the inference system
 '''
-immutable FISSugeno
+struct FISSugeno
 	input_mfs_dicts::Vector{Dict{AbstractString, MF}}
 	rules::Vector{Rule}
 end

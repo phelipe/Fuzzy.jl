@@ -4,7 +4,7 @@ sigma = 2
 mf = GaussianMF(center, sigma)
 
 # Evaluation tests
-@assert mf.eval(center + sigma) == e ^ (-0.5)
+@assert mf.eval(center + sigma) == exp(-0.5)
 @assert mf.eval(center) == 1
 @assert mf.eval(center + sigma) == mf.eval(center - sigma)
 

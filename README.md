@@ -3,7 +3,7 @@
 Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in [Lepisma](https://github.com/lepisma/Fuzzy.jl).
 
 ## TODO
-- [ ] Update to julia 1.1
+- [x] Update to julia 1.x
 
 ## Build
 
