@@ -95,7 +95,7 @@ mutable struct GaussianMF<:MF
 		this.sigma = sigma
 
 		this.eval = function eval(x)
-			e ^ ( - 0.5 * ((x - this.center) / this.sigma) ^ 2)
+			(MathConstants.e) ^ ( - 0.5 * ((x - this.center) / this.sigma) ^ 2)
 		end
 
 		this.mean_at = function mean_at(firing_strength)
