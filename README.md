@@ -2,8 +2,6 @@
 
 Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in [Lepisma](https://github.com/lepisma/Fuzzy.jl).
 
-## TODO
-- [x] Update to julia 1.x
 
 ## Build
 
@@ -115,9 +113,6 @@ julia> eval_fis(fis, in_vals)
   - Drastic sum (D-SUM)
   - Einstein sum (E-SUM)
   - Hamacher sum (H-SUM)
-
-## TODO
- - [ ] update to 1.0 
 
 ## License
 
