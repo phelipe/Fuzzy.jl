@@ -10,7 +10,7 @@ Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in [
 ## Install
 
 ```julia
-julia> Pkg.clone("git://github.com/phelipe/Fuzzy.jl.git")
+pkg> add https://github.com/phelipe/Fuzzy.jl
 ```
 
 ## QuickStart
