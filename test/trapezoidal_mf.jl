@@ -6,10 +6,10 @@ r_bottom_vertex = 11
 mf = TrapezoidalMF(l_bottom_vertex, l_top_vertex, r_top_vertex, r_bottom_vertex)
 
 # Evaluation tests
-@assert mf.eval(l_top_vertex) == mf.eval(r_top_vertex) == 1
-@assert mf.eval(l_bottom_vertex) == mf.eval(r_bottom_vertex) == 0
-@assert mf.eval((l_bottom_vertex + l_top_vertex) / 2) == mf.eval((r_top_vertex + r_bottom_vertex) / 2) == 0.5
+@assert Fuzzy.eval(mf, l_top_vertex) == Fuzzy.eval(mf, r_top_vertex) == 1
+@assert Fuzzy.eval(mf, l_bottom_vertex) == Fuzzy.eval(mf, r_bottom_vertex) == 0
+@assert Fuzzy.eval(mf, (l_bottom_vertex + l_top_vertex) / 2) == Fuzzy.eval(mf, (r_top_vertex + r_bottom_vertex) / 2) == 0.5
 
 # Mean finding tests
-@assert mf.mean_at(1) == (l_top_vertex + r_top_vertex) / 2
-@assert mf.mean_at(0) == (l_bottom_vertex + r_bottom_vertex) / 2
+@assert Fuzzy.mean_at(mf, 1) == (l_top_vertex + r_top_vertex) / 2
+@assert Fuzzy.mean_at(mf, 0) == (l_bottom_vertex + r_bottom_vertex) / 2

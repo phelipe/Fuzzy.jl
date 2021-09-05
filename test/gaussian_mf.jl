@@ -4,9 +4,9 @@ sigma = 2
 mf = GaussianMF(center, sigma)
 
 # Evaluation tests
-@assert mf.eval(center + sigma) == exp(-0.5)
-@assert mf.eval(center) == 1
-@assert mf.eval(center + sigma) == mf.eval(center - sigma)
+@assert Fuzzy.eval(mf, center + sigma) == exp(-0.5)
+@assert Fuzzy.eval(mf, center) == 1
+@assert Fuzzy.eval(mf, center + sigma) == Fuzzy.eval(mf, center - sigma)
 
 # Mean finding tests
-@assert mf.mean_at(1) == mf.mean_at(0.6) == mf.mean_at(0.3) == mf.mean_at(0) == center
+@assert Fuzzy.mean_at(mf, 1) == Fuzzy.mean_at(mf, 0.6) == Fuzzy.mean_at(mf, 0.3) == Fuzzy.mean_at(mf, 0) == center

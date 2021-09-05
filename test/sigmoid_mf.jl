@@ -5,8 +5,8 @@ limit = 10
 mf = SigmoidMF(a, c, limit)
 
 # Evaluation tests
-@assert mf.eval(c) == 0.5
-@assert mf.eval(c - 5) < mf.eval(c + 5)
+@assert Fuzzy.eval(mf, c) == 0.5
+@assert Fuzzy.eval(mf, c - 5) < Fuzzy.eval(mf, c + 5)
 
 # Mean finding tests
-@assert mf.mean_at(1) > mf.mean_at(0.6) > mf.mean_at(0.3) > mf.mean_at(0)
+@assert Fuzzy.mean_at(mf, 1) > Fuzzy.mean_at(mf, 0.6) > Fuzzy.mean_at(mf, 0.3) > Fuzzy.mean_at(mf, 0)
