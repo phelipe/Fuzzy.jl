@@ -1,10 +1,10 @@
 name = "Fuzzy"
 uuid = "a9166f1b-85e5-4df0-9c26-e06b441f12e8"
 authors = ["Phelipe Wesley <phelipewesleydeoliveira@gmail.com> and contributors"]
-version = "0.2.1"
+version = "0.3.0"
 
 [compat]
-julia = "1"
+julia = "1.6"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
