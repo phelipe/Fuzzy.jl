@@ -4,7 +4,7 @@ module Fuzzy
 
     export Rule, FISMamdani, FISSugeno
 
-    export eval_fis
+    export mean_at, eval_fis
 
     export minimum_value, algebraic_product, bounded_difference, drastic_product, einstein_product, hamacher_product
 
@@ -18,6 +18,9 @@ module Fuzzy
 
     # Membership functions
     include("MF.jl")
+
+    # Membership functions evaluations
+    include("EvalMF.jl")
 
     # FIS
     include("FIS.jl")
