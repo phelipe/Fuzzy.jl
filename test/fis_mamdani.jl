@@ -27,18 +27,18 @@ ival2 = [5.7, 2.0]
 @assert eval_fis(fis, ival2) == 6.0
 
 
-service = Dict( "poor"      => TrapezoidalMF(0.0, 0.0, 2.0, 4.0), 
-                "good"      => TriangularMF(3., 5., 7.),
-                "excellent" => TrapezoidalMF(6., 8., 10., 10.))
+service = Dict("poor" => TrapezoidalMF(0.0, 0.0, 2.0, 4.0),
+    "good" => TriangularMF(3.0, 5.0, 7.0),
+    "excellent" => TrapezoidalMF(6.0, 8.0, 10.0, 10.0))
 
-food = Dict("rancid"    => TrapezoidalMF(0., 0., 3., 6.),
-            "delicious" => TrapezoidalMF(4., 7., 10., 10.))
+food = Dict("rancid" => TrapezoidalMF(0.0, 0.0, 3.0, 6.0),
+    "delicious" => TrapezoidalMF(4.0, 7.0, 10.0, 10.0))
 
 inputs = [service, food]
 
-tip  = Dict("cheap"     => TrapezoidalMF(10., 10., 20., 30.),
-            "average"   => TriangularMF(20., 30., 40.), 
-            "generous"  => TrapezoidalMF(30., 40, 50., 50.))
+tip = Dict("cheap" => TrapezoidalMF(10.0, 10.0, 20.0, 30.0),
+    "average" => TriangularMF(20.0, 30.0, 40.0),
+    "generous" => TrapezoidalMF(30.0, 40, 50.0, 50.0))
 
 rule1 = Rule(["poor", "rancid"], "cheap", "MAX")
 
@@ -50,6 +50,6 @@ rules = [rule1, rule2, rule3]
 
 fis_tips = FISMamdani(inputs, tip, rules)
 
-in_vals = [7., 8,]
+in_vals = [7.0, 8,]
 
 @assert eval_fis(fis_tips, in_vals) == 45.0
