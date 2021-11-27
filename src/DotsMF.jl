@@ -8,6 +8,18 @@ end
 chart_prepare(sets_dict::Dict{String,N}, input_point_vector::Union{StepRange,StepRangeLen}) where {N<:MF} =
     chart_prepare(sets_dict, collect(input_point_vector))
 
+
+"""
+    Create points
+
+    eval_fis(sets_dict, input_point_vector)
+
+    Parameters
+    ----------
+    `sets_dict` dictionary of membership functions
+    `input_point_vector` array of points
+
+"""
 function chart_prepare(sets_dict::Dict{String,N}, input_point_vector::Vector{T}) where {T<:Number,N<:MF}
     names = String[]
     outputs = Array{T,1}[]
