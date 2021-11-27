@@ -12,6 +12,8 @@ export minimum_value, algebraic_product, bounded_difference, drastic_product, ei
 
 export maximum_value, algebraic_sum, bounded_sum, drastic_sum, einstein_sum, hamacher_sum
 
+export MFDict
+
 # T-Norm
 include("T-norm.jl")
 
@@ -32,5 +34,7 @@ include("Eval.jl")
 
 #Dots function
 include("DotsMF.jl")
+
+MFDict = Dict{String,MF}
 
 end
