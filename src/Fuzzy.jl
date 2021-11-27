@@ -1,31 +1,40 @@
 module Fuzzy
 
-    export TriangularMF, GaussianMF, BellMF, TrapezoidalMF, SigmoidMF
+export TriangularMF, GaussianMF, BellMF, TrapezoidalMF, SigmoidMF
 
-    export Rule, FISMamdani, FISSugeno
+export Rule, FISMamdani, FISSugeno
 
-    export mean_at, eval_fis
+export mean_at, eval_fis
 
-    export minimum_value, algebraic_product, bounded_difference, drastic_product, einstein_product, hamacher_product
+export chart_prepare
 
-    export maximum_value, algebraic_sum, bounded_sum, drastic_sum, einstein_sum, hamacher_sum
+export minimum_value, algebraic_product, bounded_difference, drastic_product, einstein_product, hamacher_product
 
-    # T-Norm
-    include("T-norm.jl")
+export maximum_value, algebraic_sum, bounded_sum, drastic_sum, einstein_sum, hamacher_sum
 
-    # S-Norm
-    include("S-norm.jl")
+export MFDict
 
-    # Membership functions
-    include("MF.jl")
+# T-Norm
+include("T-norm.jl")
 
-    # Membership functions evaluations
-    include("EvalMF.jl")
+# S-Norm
+include("S-norm.jl")
 
-    # FIS
-    include("FIS.jl")
+# Membership functions
+include("MF.jl")
 
-    # Evaluation functions
-    include("Eval.jl")
+# Membership functions evaluations
+include("EvalMF.jl")
+
+# FIS
+include("FIS.jl")
+
+# Evaluation functions
+include("Eval.jl")
+
+#Dots function
+include("DotsMF.jl")
+
+MFDict = Dict{String,MF}
 
 end

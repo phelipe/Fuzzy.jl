@@ -1,11 +1,10 @@
 # Fuzzy
+
 =============
 
 Mamdani and Sugeno type Fuzzy Inference System in julia. This code is based in [Lepisma](https://github.com/lepisma/Fuzzy.jl).
 
-
 [![CI](https://github.com/phelipe/Fuzzy.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/phelipe/Fuzzy.jl/actions/workflows/ci.yml)
-
 
 ## Install
 
@@ -113,6 +112,18 @@ julia> eval_fis(fis, in_vals)
   - Drastic sum (D-SUM)
   - Einstein sum (E-SUM)
   - Hamacher sum (H-SUM)
+
+## Prepare to plot your Fuzzy sets
+
+- Create points to use in plot packages using the chart_prepare
+
+```julia
+julia> input_a = Dict("small" => TriangularMF(1, 2, 3), "large" => TriangularMF(5, 6, 7));
+julia> x = range(0, 8, length = 100);
+julia> data = chart_prepare(ipa, x)
+julia> using Plots
+julia> plot(x, data["values"], label = data["names"])
+```
 
 ## License
 
