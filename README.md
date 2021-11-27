@@ -120,7 +120,7 @@ julia> eval_fis(fis, in_vals)
 ```julia
 julia> input_a = Dict("small" => TriangularMF(1, 2, 3), "large" => TriangularMF(5, 6, 7));
 julia> x = range(0, 8, length = 100);
-julia> data = chart_prepare(ipa, x)
+julia> data = chart_prepare(input_a, x)
 julia> using Plots
 julia> plot(x, data["values"], label = data["names"])
 ```
